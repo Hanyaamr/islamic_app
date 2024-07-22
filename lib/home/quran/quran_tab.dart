@@ -251,22 +251,32 @@ class QuranTab extends StatelessWidget {
         Expanded(
             flex: 2,
             child: Image.asset('assets/images/qur2an_screen_logo.png')),
-        Divider(
+        // Divider(
+        //   color: provider.isDarkMode()
+        //       ? ColorsTheme.yellowDark
+        //       : ColorsTheme.yellow,
+        //   thickness: 4,
+        // ),
+
+        Container(
           color: provider.isDarkMode()
               ? ColorsTheme.yellowDark
               : ColorsTheme.yellow,
-          thickness: 4,
+          height: MediaQuery.of(context).size.height * .008,
+          width: MediaQuery.of(context).size.width,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              AppLocalizations.of(context)!.surah_name,
-              style: Theme.of(context).textTheme.bodyMedium,
+            Expanded(
+              child: Text(
+                AppLocalizations.of(context)!.surah_name,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(
               child: VerticalDivider(
-                width: 0,
                 thickness: 5,
                 color: provider.isDarkMode()
                     ? ColorsTheme.yellowDark
@@ -274,36 +284,52 @@ class QuranTab extends StatelessWidget {
               ),
               height: 50,
             ),
-            Text(
-              AppLocalizations.of(context)!.versus_number,
-              style: Theme.of(context).textTheme.bodyMedium,
+            Expanded(
+              child: Text(
+                AppLocalizations.of(context)!.versus_number,
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),
-        Divider(
+        // Divider(
+        //   color: provider.isDarkMode()
+        //       ? ColorsTheme.yellowDark
+        //       : ColorsTheme.yellow,
+        //   thickness: 4,
+        // ),
+        Container(
           color: provider.isDarkMode()
               ? ColorsTheme.yellowDark
               : ColorsTheme.yellow,
-          thickness: 4,
+          height: MediaQuery.of(context).size.height * .008,
+          width: MediaQuery.of(context).size.width,
         ),
         Expanded(
           flex: 5,
           child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
-              return Divider(
-                height: 2,
+              return Container(
                 color: provider.isDarkMode()
                     ? ColorsTheme.yellowDark
                     : ColorsTheme.yellow,
-                thickness: 1,
+                height: MediaQuery.of(context).size.height * .003,
+                width: MediaQuery.of(context).size.width,
               );
+              //   Divider(
+              //   height: 2,
+              //   color: provider.isDarkMode()
+              //       ? ColorsTheme.yellowDark
+              //       : ColorsTheme.yellow,
+              //   thickness: 1,
+              // );
             },
             itemCount: suraNames.length,
             itemBuilder: (context, index) {
               return Row(
                 children: [
                   Expanded(
-                    flex: 3,
                     child: InkWell(
                       onTap: () => Navigator.of(context).pushNamed(
                         SurahDetails.routeName,
@@ -317,17 +343,24 @@ class QuranTab extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 50,
-                    child: VerticalDivider(
-                      thickness: 5,
-                      color: provider.isDarkMode()
-                          ? ColorsTheme.yellowDark
-                          : ColorsTheme.yellow,
-                    ),
+                  // SizedBox(
+                  //   height: 50,
+                  //
+                  //   child: VerticalDivider(
+                  //     thickness: 5,
+                  //     color: provider.isDarkMode()
+                  //         ? ColorsTheme.yellowDark
+                  //         : ColorsTheme.yellow,
+                  //   ),
+                  // ),
+                  Container(
+                    color: provider.isDarkMode()
+                        ? ColorsTheme.yellowDark
+                        : ColorsTheme.yellow,
+                    height: MediaQuery.of(context).size.height * .05,
+                    width: MediaQuery.of(context).size.width * .009,
                   ),
                   Expanded(
-                      flex: 3,
                       child: Text(versesNumber[index],
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodySmall)),

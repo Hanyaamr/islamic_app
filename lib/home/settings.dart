@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
                   icon: Icon(Icons.expand_more_rounded),
                   color: themeProvider.isDarkMode()
                       ? ColorsTheme.yellowDark
-                      : Colors.white54,
+                      : Colors.black,
                 )
               ],
             ),
@@ -94,7 +94,7 @@ class _SettingsState extends State<Settings> {
                       Icons.expand_more_rounded,
                       color: themeProvider.isDarkMode()
                           ? ColorsTheme.yellowDark
-                          : Colors.white54,
+                          : Colors.black,
                     ))
               ],
             ),
