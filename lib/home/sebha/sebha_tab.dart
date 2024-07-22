@@ -68,7 +68,10 @@ class _SebhaTabState extends State<SebhaTab> {
               ),
             ],
           ),
-          Text(AppLocalizations.of(context)!.tsbehat_number),
+          Text(
+            AppLocalizations.of(context)!.tsbehat_number,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
           Container(
             padding: EdgeInsets.all(25),
             decoration: BoxDecoration(

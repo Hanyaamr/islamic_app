@@ -15,6 +15,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppThemeProvider>(context);
+    var provider2 = Provider.of<AppThemeProvider>(context);
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.all(6),
@@ -30,7 +31,9 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
                   : getUnselectedItemWidget(
                       AppLocalizations.of(context)!.light)),
           Divider(
-            color: ColorsTheme.yellow,
+            color: provider2.isDarkMode()
+                ? ColorsTheme.yellowDark
+                : ColorsTheme.yellow,
           ),
           InkWell(
             onTap: () {
@@ -41,7 +44,9 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
                 : getUnselectedItemWidget(AppLocalizations.of(context)!.dark),
           ),
           Divider(
-            color: ColorsTheme.yellow,
+            color: provider2.isDarkMode()
+                ? ColorsTheme.yellowDark
+                : ColorsTheme.yellow,
           ),
         ],
       ),
@@ -49,6 +54,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   }
 
   Widget getSelectedItemWidget(String text) {
+    var provider = Provider.of<AppThemeProvider>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -56,12 +62,17 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
           text,
           style: Theme.of(context)
               .textTheme
-              .bodyMedium
-              ?.copyWith(color: ColorsTheme.yellow, fontSize: 25),
+              .bodyMedium?.copyWith(
+              color: provider.isDarkMode()
+                  ? ColorsTheme.yellowDark
+                  : ColorsTheme.yellow,
+              fontSize: 25),
         ),
         Icon(
           Icons.check,
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           size: 35,
         )
       ],

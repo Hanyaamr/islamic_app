@@ -4,6 +4,8 @@ import 'package:islamic_code/colors_theme.dart';
 import 'package:islamic_code/providers/app_language_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/app_theme_provider.dart';
+
 class LanguageBottomSheet extends StatefulWidget {
   const LanguageBottomSheet({super.key});
 
@@ -15,6 +17,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppLanguageProvider>(context);
+    var provider2 = Provider.of<AppThemeProvider>(context);
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.all(6),
@@ -30,7 +33,9 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                   : getUnselectedItemWidget(
                       AppLocalizations.of(context)!.english)),
           Divider(
-            color: ColorsTheme.yellow,
+            color: provider2.isDarkMode()
+                ? ColorsTheme.yellowDark
+                : ColorsTheme.yellow,
           ),
           InkWell(
             onTap: () {
@@ -41,7 +46,9 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                 : getUnselectedItemWidget(AppLocalizations.of(context)!.arabic),
           ),
           Divider(
-            color: ColorsTheme.yellow,
+            color: provider2.isDarkMode()
+                ? ColorsTheme.yellowDark
+                : ColorsTheme.yellow,
           ),
         ],
       ),
@@ -49,19 +56,25 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget getSelectedItemWidget(String text) {
+    var provider = Provider.of<AppThemeProvider>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           text,
           style: Theme.of(context)
-              .textTheme
-              .bodyMedium
-              ?.copyWith(color: ColorsTheme.yellow, fontSize: 25),
+              .textTheme.bodyMedium?.copyWith(
+              color: provider.isDarkMode()
+                  ? ColorsTheme.yellowDark
+                  : ColorsTheme.yellow,
+              fontSize: 25),
         ),
         Icon(
           Icons.check,
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           size: 35,
         )
       ],
@@ -69,6 +82,8 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget getUnselectedItemWidget(String text) {
+    var provider = Provider.of<AppThemeProvider>(context);
+
     return Text(
       text,
       style: Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 15),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_code/colors_theme.dart';
 import 'package:islamic_code/home/hadeth/hadeth.dart';
 import 'package:islamic_code/home/hadeth/item_hadeth_details.dart';
@@ -41,7 +42,7 @@ class _HadethDetailsState extends State<HadethDetails> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           title: Text(
-            'Islami',
+            AppLocalizations.of(context)!.app_title,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
@@ -52,26 +53,20 @@ class _HadethDetailsState extends State<HadethDetails> {
               horizontal: MediaQuery.of(context).size.width * 0.05,
             ),
             decoration: BoxDecoration(
-                color: Color.fromRGBO(248, 248, 248, .5),
+                color: provider.isDarkMode()
+                    ? ColorsTheme.blueDark
+                    : Color.fromRGBO(248, 248, 248, .5),
                 borderRadius: BorderRadius.circular(40)),
             child: Column(
               children: [
                 Expanded(
-                  flex: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(args.title),
-                      // (args.name),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.play_circle_sharp)),
-                    ],
-                  ),
+                  child: Text(args.title),
                 ),
                 Container(
                   height: 1, // Adjust height as needed
-                  color: ColorsTheme.yellow, // Adjust color as needed
+                  color: provider.isDarkMode()
+                      ? ColorsTheme.yellowDark
+                      : ColorsTheme.yellow, // Adjust color as needed
                   width: 270, // Adjust width for a thin line
                 ),
                 SizedBox(

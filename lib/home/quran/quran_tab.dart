@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_code/colors_theme.dart';
 import 'package:islamic_code/home/quran/surah_details.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_theme_provider.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> suraNames = [
@@ -241,38 +244,46 @@ class QuranTab extends StatelessWidget {
   //Map<String, int> suraData = Map.fromIterables(suraNames, versesNumber);
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppThemeProvider>(context);
+
     return Column(
       children: [
         Expanded(
             flex: 2,
             child: Image.asset('assets/images/qur2an_screen_logo.png')),
         Divider(
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           thickness: 4,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              AppLocalizations.of(context)!.versus_number,
+              AppLocalizations.of(context)!.surah_name,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             SizedBox(
               child: VerticalDivider(
                 width: 0,
                 thickness: 5,
-                color: ColorsTheme.yellow,
+                color: provider.isDarkMode()
+                    ? ColorsTheme.yellowDark
+                    : ColorsTheme.yellow,
               ),
               height: 50,
             ),
             Text(
-              AppLocalizations.of(context)!.surah_name,
+              AppLocalizations.of(context)!.versus_number,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),
         Divider(
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           thickness: 4,
         ),
         Expanded(
@@ -281,7 +292,9 @@ class QuranTab extends StatelessWidget {
             separatorBuilder: (BuildContext context, int index) {
               return Divider(
                 height: 2,
-                color: ColorsTheme.yellow,
+                color: provider.isDarkMode()
+                    ? ColorsTheme.yellowDark
+                    : ColorsTheme.yellow,
                 thickness: 1,
               );
             },
@@ -290,19 +303,7 @@ class QuranTab extends StatelessWidget {
               return Row(
                 children: [
                   Expanded(
-                      flex: 5,
-                      child: Text(versesNumber[index],
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium)),
-                  SizedBox(
-                    height: 50,
-                    child: VerticalDivider(
-                      thickness: 5,
-                      color: ColorsTheme.yellow,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 4,
+                    flex: 3,
                     child: InkWell(
                       onTap: () => Navigator.of(context).pushNamed(
                         SurahDetails.routeName,
@@ -312,10 +313,24 @@ class QuranTab extends StatelessWidget {
                       child: Text(
                         ' ${suraNames[index]}',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 50,
+                    child: VerticalDivider(
+                      thickness: 5,
+                      color: provider.isDarkMode()
+                          ? ColorsTheme.yellowDark
+                          : ColorsTheme.yellow,
+                    ),
+                  ),
+                  Expanded(
+                      flex: 3,
+                      child: Text(versesNumber[index],
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodySmall)),
                 ],
               );
             },

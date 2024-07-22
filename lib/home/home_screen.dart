@@ -44,11 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: Colors.transparent,
             title: Text(
               AppLocalizations.of(context)!.app_title,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
           bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(canvasColor: ColorsTheme.yellow),
+            data: Theme.of(context).copyWith(
+                canvasColor: provider.appTheme == ThemeMode.light
+                    ? ColorsTheme.yellow
+                    : ColorsTheme.blueDark),
             child: BottomNavigationBar(
               currentIndex: selectedIndex,
               onTap: (index) {

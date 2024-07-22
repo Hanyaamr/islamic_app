@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islamic_code/colors_theme.dart';
 import 'package:islamic_code/home/hadeth/item_hadeth_name.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/app_theme_provider.dart';
 
 class HadethTab extends StatefulWidget {
   static const String routeName = 'hadeth';
@@ -16,6 +19,8 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppThemeProvider>(context);
+
     if (HadethList.isEmpty) {
       loadHadethFile();
     }
@@ -23,7 +28,9 @@ class _HadethTabState extends State<HadethTab> {
       children: [
         Expanded(flex: 2, child: Image.asset('assets/images/hadeth_logo.png')),
         Divider(
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           thickness: 4,
         ),
         Text(
@@ -31,7 +38,9 @@ class _HadethTabState extends State<HadethTab> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         Divider(
-          color: ColorsTheme.yellow,
+          color: provider.isDarkMode()
+              ? ColorsTheme.yellowDark
+              : ColorsTheme.yellow,
           thickness: 4,
         ),
         Expanded(
@@ -39,14 +48,18 @@ class _HadethTabState extends State<HadethTab> {
           child: HadethList.isEmpty
               ? Center(
                   child: CircularProgressIndicator(
-                    color: ColorsTheme.yellow,
+                    color: provider.isDarkMode()
+                        ? ColorsTheme.yellowDark
+                        : ColorsTheme.yellow,
                   ),
                 )
               : ListView.separated(
                   separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(
+                    return Divider(
                       height: 1,
-                      color: ColorsTheme.yellow,
+                      color: provider.isDarkMode()
+                          ? ColorsTheme.yellowDark
+                          : ColorsTheme.yellow,
                       thickness: 3,
                     );
                   },

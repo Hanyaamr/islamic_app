@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_code/colors_theme.dart';
 
 class MyThemeData {
@@ -17,24 +18,30 @@ class MyThemeData {
         selectedItemColor: ColorsTheme.blackColor,
         selectedLabelStyle: TextStyle(fontSize: 12)),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(
-        fontSize: 30,
-        color: ColorsTheme.blackColor,
-        fontWeight: FontWeight.bold,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 25,
-        color: ColorsTheme.blackColor,
-        fontWeight: FontWeight.w700,
-      ),
-      titleLarge: TextStyle(
-        fontSize: 20,
-        color: ColorsTheme.blackColor,
-        fontWeight: FontWeight.w400,
-      ),
-    ),
-  );
+        bodyMedium: GoogleFonts.elMessiri(
+          // surah name,ez3t el qur'an , no.tsbee7at, el a7adeth title
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.w600,
+        ),
+
+        bodySmall: GoogleFonts.inter(
+          //verses no, surah names in details,a7adeth title in tab, hadeth title
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.w300,
+        ),
+
+        //hadeth info , verses
+        titleLarge: TextStyle(
+          fontSize: 20,
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),
+      ));
   static final ThemeData darkMode = ThemeData(
+    bottomSheetTheme:
+        BottomSheetThemeData(backgroundColor: ColorsTheme.blueDark),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
       iconTheme: IconThemeData(color: Colors.white),
@@ -47,19 +54,31 @@ class MyThemeData {
         selectedItemColor: ColorsTheme.yellowDark,
         selectedLabelStyle: TextStyle(fontSize: 12)),
     textTheme: TextTheme(
-      bodyLarge: TextStyle(
+      //islami title
+      bodyLarge: GoogleFonts.elMessiri(
         fontSize: 30,
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
-      bodyMedium: TextStyle(
+
+      bodyMedium: GoogleFonts.elMessiri(
+        // surah name,ez3t el qur'an , no.tsbee7at, el a7adeth title
         fontSize: 25,
         color: Colors.white,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
       ),
+
+      bodySmall: GoogleFonts.inter(
+        //verses no, surah names in details,a7adeth title in tab, hadeth title
+        fontSize: 25,
+        color: Colors.white,
+        fontWeight: FontWeight.w300,
+      ),
+
+      //hadeth info , verses
       titleLarge: TextStyle(
         fontSize: 20,
-        color: ColorsTheme.blackColor,
+        color: ColorsTheme.yellowDark,
         fontWeight: FontWeight.w400,
       ),
     ),
