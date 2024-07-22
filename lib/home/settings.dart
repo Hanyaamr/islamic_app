@@ -30,12 +30,17 @@ class _SettingsState extends State<Settings> {
           Text(AppLocalizations.of(context)!.language),
           Container(
             margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white54,
+                color: themeProvider.isDarkMode()
+                    ? Color.fromRGBO(51, 70, 112, 0.4196078431372549)
+                    : Colors.white54,
                 border: Border.all(
-                  color: ColorsTheme.yellow,
+                  width: 3,
+                  color: themeProvider.isDarkMode()
+                      ? ColorsTheme.yellowDark
+                      : ColorsTheme.yellow,
                 )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +52,11 @@ class _SettingsState extends State<Settings> {
                     onPressed: () {
                       showLanguageBottomSheet(context);
                     },
-                    icon: Icon(Icons.expand_more_rounded))
+                  icon: Icon(Icons.expand_more_rounded),
+                  color: themeProvider.isDarkMode()
+                      ? ColorsTheme.yellowDark
+                      : Colors.white54,
+                )
               ],
             ),
           ),
@@ -57,12 +66,17 @@ class _SettingsState extends State<Settings> {
           Text(AppLocalizations.of(context)!.theme),
           Container(
             margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white54,
+                color: themeProvider.isDarkMode()
+                    ? Color.fromRGBO(51, 70, 112, 0.4196078431372549)
+                    : Colors.white54,
                 border: Border.all(
-                  color: ColorsTheme.yellow,
+                  width: 3,
+                  color: themeProvider.isDarkMode()
+                      ? ColorsTheme.yellowDark
+                      : ColorsTheme.yellow,
                 )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,7 +90,12 @@ class _SettingsState extends State<Settings> {
                     onPressed: () {
                       showThemeBottomSheet();
                     },
-                    icon: Icon(Icons.expand_more_rounded))
+                    icon: Icon(
+                      Icons.expand_more_rounded,
+                      color: themeProvider.isDarkMode()
+                          ? ColorsTheme.yellowDark
+                          : Colors.white54,
+                    ))
               ],
             ),
           )
