@@ -3,9 +3,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islamic_code/colors_theme.dart';
 
 class MyThemeData {
-  ///light , dark mode, colors(separated files)
+
+  ///light , dark mode,
+  /// colors(separated files)
   //const --> can know the value during compile time
-  //file --> compile cannot know except during runtime
+  //final --> compile cannot know except during runtime
   static final ThemeData lightMode = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(

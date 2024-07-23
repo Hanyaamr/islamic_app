@@ -38,10 +38,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 fit: BoxFit.fill,
               ),
         Scaffold(
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
           appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
+            // elevation: 0,
+            // backgroundColor: Colors.transparent,
             title: Text(
               AppLocalizations.of(context)!.app_title,
               style: Theme.of(context).textTheme.bodyMedium,
